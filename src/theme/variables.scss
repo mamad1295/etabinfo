@@ -38,7 +38,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  mymenu:     #208eff,
 );
 
 
@@ -53,8 +54,10 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$toolbar-md-background: color($colors, primary);
 
-
+$tabs-md-background: color($colors,mymenu);
+$tabs-md-tab-color-active: color($colors,light);
 
 // App Windows Variables
 // --------------------------------------------------
