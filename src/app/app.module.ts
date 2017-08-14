@@ -14,6 +14,19 @@ import { SchoolDetailsPage } from '../pages/school-details/school-details'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SchoolProvider } from '../providers/school/school';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { FirebaseProvider } from './../providers/firebase/firebase';
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBHYFJc6XzgDJc7H5xUpUvtvJqRMazkuMM",
+    authDomain: "etabinfoapi.firebaseapp.com",
+    databaseURL: "https://etabinfoapi.firebaseio.com",
+    projectId: "etabinfoapi",
+    storageBucket: "etabinfo.appspot.com",
+    messagingSenderId: "868057406124"
+  };
 
 @NgModule({
   declarations: [
@@ -27,6 +40,8 @@ import { SchoolProvider } from '../providers/school/school';
   ],
   imports: [
     BrowserModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
     HttpModule
   ],
@@ -44,7 +59,8 @@ import { SchoolProvider } from '../providers/school/school';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SchoolProvider
+    SchoolProvider,
+    FirebaseProvider
   ]
 })
 export class AppModule {}

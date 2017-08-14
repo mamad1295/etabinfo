@@ -9,4 +9,26 @@
 <ion-content padding>
 
   <p> Full stack developer</p>
+
+  <ion-row>
+    <ion-col col-9>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="newComment" placeholder="Your comment"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <button ion-button (click)="addComment()">Add!</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let comm of comments | async">
+      <ion-item>
+        {{ comm.$value }}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" icon-only (click)="removeComment(comm.$key)"><ion-icon name="trash"></ion-icon></button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
