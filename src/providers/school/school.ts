@@ -8,13 +8,23 @@ import {SCHOOLS} from '../../models/mockSchool';
 @Injectable()
 export class SchoolProvider {
   
+  http: any;
+  baseUrl: String;
 
-  constructor(public http: Http) {
+  constructor(http: Http) {
     console.log('Hello SchoolProvider Provider');
+    this.http = http;
+    this.baseUrl = 'https://www.reddit.com/r';
   }
 
-  getSchools(): SchoolModel[]{
-    return SCHOOLS;
-  }
+   getSchools(): Promise<SchoolModel[]>{
+    return Promise.resolve(SCHOOLS);
+  } 
   
+  getPosts(category, limit){
+    console.log("from service "+this.baseUrl+'/'+category
+      +'/top.json?limit='+limit);
+    return this.http.get(this.baseUrl+'/'+category
+      +'/top.json?limit='+limit).map(res => res.json());
+  }
 }
