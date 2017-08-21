@@ -17,6 +17,9 @@ import { SchoolProvider } from '../providers/school/school';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { FirebaseProvider } from './../providers/firebase/firebase';
+import { Geolocation } from '@ionic-native/geolocation';
+import { AgmCoreModule } from '@agm/core';
+
 
 
 const firebaseConfig = {
@@ -43,6 +46,9 @@ const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey:"AIzaSyBaso-gHpdl6JkxtShxnhgO56HtKUKhkyc"
+    }),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -60,7 +66,8 @@ const firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SchoolProvider,
-    FirebaseProvider
+    FirebaseProvider,
+    Geolocation
   ]
 })
 export class AppModule {}
